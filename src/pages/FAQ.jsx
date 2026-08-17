@@ -186,7 +186,7 @@ function FAQ() {
  
 
   return (
-    <div className="min-h-screen bg-secondary-50 py-16">
+    <div className="min-h-screen bg-page py-16">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -194,17 +194,17 @@ function FAQ() {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-4xl font-bold text-center mb-4">Frequently Asked Questions</h1>
-          <p className="text-secondary-600 text-center mb-12">
+          <p className="text-muted text-center mb-12">
             Find answers to common questions about our platform, cryptocurrency payments, and real estate investment.
           </p>
 
           <div className="space-y-8">
             {faqSections.map((section, sectionIndex) => (
-              <div key={sectionIndex} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <h2 className="text-xl font-semibold p-6 bg-secondary-50">
+              <div key={sectionIndex} className="card">
+                <h2 className="text-xl font-semibold p-6 bg-page">
                   {section.title}
                 </h2>
-                <div className="divide-y divide-secondary-100">
+                <div className="divide-y divide-line">
                   {section.questions.map((item, questionIndex) => (
                     <div key={questionIndex} className="p-6">
                       <button
@@ -227,7 +227,7 @@ function FAQ() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <p className="mt-4 text-secondary-600">
+                            <p className="mt-4 text-muted">
                               {item.answer}
                             </p>
                           </motion.div>

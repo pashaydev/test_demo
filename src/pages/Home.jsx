@@ -248,7 +248,7 @@ function Home() {
       <section className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Start Investing in Minutes</h2>
-          <p className="text-secondary-600">Your journey to crypto-powered real estate investment</p>
+          <p className="text-muted">Your journey to crypto-powered real estate investment</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -261,13 +261,13 @@ function Home() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
             >
-              <div className="bg-white p-6 rounded-lg shadow-md text-center">
-                <div className="bg-primary-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="card p-6 text-center">
+                <div className="bg-primary-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <step.icon className="text-2xl text-primary-600" />
                 </div>
                 <div className="text-primary-600 text-2xl font-bold mb-4">Step {index + 1}</div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-secondary-600">{step.description}</p>
+                <p className="text-muted">{step.description}</p>
               </div>
             </motion.div>
           ))}
@@ -307,7 +307,7 @@ function Home() {
       <section className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Featured Investment Opportunities</h2>
-          <p className="text-secondary-600">Curated properties with verified returns and immediate tokenization</p>
+          <p className="text-muted">Curated properties with verified returns and immediate tokenization</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -332,31 +332,31 @@ function Home() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{property.title}</h3>
-                <p className="text-secondary-600 mb-4">{property.location}</p>
+                <p className="text-muted mb-4">{property.location}</p>
                 
                 <div className="flex justify-between items-center mb-4">
                   <div>
-                    <p className="text-sm text-secondary-500">Price</p>
+                    <p className="text-sm text-subtle">Price</p>
                     <p className="font-semibold">${property.price.usd.toLocaleString()}</p>
                     <p className="text-sm text-primary-600">{property.price.eth} ETH</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm text-secondary-500">ROI</p>
+                    <p className="text-sm text-subtle">ROI</p>
                     <p className="font-semibold text-green-600">{property.roi}</p>
                   </div>
                 </div>
 
                 <div className="space-y-2 mb-4">
                   <div className="flex justify-between text-sm">
-                    <span className="text-secondary-600">Total Investors</span>
+                    <span className="text-muted">Total Investors</span>
                     <span className="font-medium">{property.metrics.totalInvestors}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-secondary-600">Funded</span>
+                    <span className="text-muted">Funded</span>
                     <span className="font-medium">{property.metrics.funded}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-secondary-600">Min Investment</span>
+                    <span className="text-muted">Min Investment</span>
                     <span className="font-medium">{property.metrics.minInvestment}</span>
                   </div>
                 </div>
@@ -375,18 +375,18 @@ function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-secondary-50 pt-16">
+      <section className="bg-page pt-16">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Why Choose RentVerse</h2>
-            <p className="text-secondary-600">Experience the future of real estate investment</p>
+            <p className="text-muted">Experience the future of real estate investment</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {advantages.map((advantage, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md text-center"
+                className="card p-6 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -394,7 +394,7 @@ function Home() {
               >
                 <advantage.icon className="text-4xl text-primary-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">{advantage.title}</h3>
-                <p className="text-secondary-600">{advantage.description}</p>
+                <p className="text-muted">{advantage.description}</p>
               </motion.div>
             ))}
           </div>
@@ -426,14 +426,14 @@ function Home() {
       </section>
       
       {/* Blog */}
-      <div className="container bg-white py-24">
+      <div className="container bg-surface py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
           <h1 className="text-3xl font-bold mb-4">Latest Insights</h1>
-          <p className="text-secondary-600">
+          <p className="text-muted">
             Stay informed with our latest articles and market analysis
           </p>
         </motion.div>
@@ -447,7 +447,7 @@ function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
+              className="card"
             >
               <Link to={`/blog/${post.slug}`}>
                 <div className="relative h-48">
@@ -464,10 +464,10 @@ function Home() {
                   <h2 className="text-xl font-semibold mb-3 hover:text-primary-600 transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-secondary-600 mb-4">
+                  <p className="text-muted mb-4">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center text-sm text-secondary-500">
+                  <div className="flex items-center text-sm text-subtle">
                     <FiUser className="mr-2" />
                     <span className="mr-4">{post.author}</span>
                     <FiClock className="mr-2" />
@@ -489,12 +489,12 @@ function Home() {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-secondary-600">Find answers to common questions about our platform, cryptocurrency payments, and real estate investment.</p>
+            <p className="text-muted">Find answers to common questions about our platform, cryptocurrency payments, and real estate investment.</p>
           </div>
           <div className="space-y-8">
             {faqSections.map((section, sectionIndex) => (
-              <div key={sectionIndex} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="divide-y divide-secondary-100">
+              <div key={sectionIndex} className="card">
+                <div className="divide-y divide-line">
                   {section.questions.map((item, questionIndex) => (
                     <div key={questionIndex} className="p-6">
                       <button
@@ -517,7 +517,7 @@ function Home() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <p className="mt-4 text-secondary-600">
+                            <p className="mt-4 text-muted">
                               {item.answer}
                             </p>
                           </motion.div>

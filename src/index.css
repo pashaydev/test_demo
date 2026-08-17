@@ -5,12 +5,35 @@
 @tailwind utilities;
 
 @layer base {
+  /* Semantic colour tokens (RGB channels, consumed by tailwind.config.js).
+     Light values mirror the original design; .dark swaps them. */
+  :root {
+    --color-page: 248 250 252;          /* secondary-50  */
+    --color-surface: 255 255 255;       /* white         */
+    --color-surface-muted: 241 245 249; /* secondary-100 */
+    --color-body: 30 41 59;             /* secondary-800 */
+    --color-muted: 71 85 105;           /* secondary-600 */
+    --color-subtle: 100 116 139;        /* secondary-500 */
+    --color-line: 226 232 240;          /* secondary-200 */
+  }
+
+  .dark {
+    --color-page: 15 23 42;             /* secondary-900 */
+    --color-surface: 30 41 59;          /* secondary-800 */
+    --color-surface-muted: 51 65 85;    /* secondary-700 */
+    --color-body: 241 245 249;          /* secondary-100 */
+    --color-muted: 203 213 225;         /* secondary-300 */
+    --color-subtle: 148 163 184;        /* secondary-400 */
+    --color-line: 51 65 85;             /* secondary-700 */
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
   }
   
   body {
-    @apply font-sans text-secondary-800 bg-secondary-50;
+    @apply font-sans text-body bg-page;
   }
 }
 
@@ -28,10 +51,10 @@
   }
   
   .input {
-    @apply block w-full rounded-md border-secondary-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm;
+    @apply block w-full rounded-md bg-surface border-line shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden;
+    @apply bg-surface rounded-lg shadow-md overflow-hidden dark:ring-1 dark:ring-line;
   }
 }
