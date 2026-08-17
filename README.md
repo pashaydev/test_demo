@@ -36,6 +36,39 @@ RentVerse is a demo platform showcasing a next-generation real-estate experience
 ![Dashboard Overview](public/client.png)
 ---
 
+## 🔌 Wallet connection & 🌙 Dark mode (added in this fork)
+
+Live demo: **https://rentverse-demo.fly.dev** · branch `feature/wallet-dark-mode`
+
+### Wallet connection
+- The **Connect** buttons (Navbar, mobile menu, Home CTA) connect a browser wallet (MetaMask, OKX, Trust, Rabby… — anything injecting an EIP-1193 provider).
+- Connected state shows `address · balance · chain`; click it to disconnect. The session is restored on reload without a popup, and the UI follows account / network switches in the wallet.
+- No wallet installed → the button becomes an **Install wallet** link. Rejected / pending requests show a short message.
+- Code: `src/wallet/` (`WalletContext.jsx` + `connectors/`) and `src/components/wallet/WalletButton.jsx`. Tests: `npm test`.
+- **Adding another wallet** (WalletConnect, Coinbase, …): create `src/wallet/connectors/<name>.js` returning `{ id, name, isAvailable, getProvider }` where `getProvider()` resolves to an EIP-1193 provider, and add it to the array in `src/wallet/connectors/index.js`. Nothing else changes.
+
+### Dark mode
+- Toggle (🌙/☀️) in the Navbar. Preference is stored in `localStorage.theme`; without one the OS setting is used. The theme is applied before first paint (inline script in `public/index.html`), so there is no light flash.
+- Implementation: 7 semantic colours (`page`, `surface`, `surface-muted`, `body`, `muted`, `subtle`, `line`) defined once as CSS variables in `src/index.css` and exposed as Tailwind colours (`tailwind.config.js`, `darkMode: 'class'`). Pages use `bg-surface`, `text-muted`… instead of `bg-white`, `text-secondary-600`… so both palettes live in one file. Photo badges and already-dark sections keep their literal colours; the 3D viewer keeps its own palette.
+- If you opened the original app before, unregister its old service worker once (DevTools → Application → Service Workers) — it cached stale bundles and has been removed.
+
+### Run locally
+```
+npm install
+npm start        # Express API on :3099 + React dev server on :3000
+npm test         # wallet tests
+```
+
+### Deploy (Fly.io)
+`server/app.js` serves the CRA `build/` (SPA fallback included) in production, so one machine runs everything.
+```
+fly auth login
+fly apps create rentverse-demo      # pick another name if taken (also update fly.toml)
+fly deploy --ha=false
+```
+
+---
+
 ## 🧩 Core Pages and Components
 
 ### 1. 🏠 Home Page
