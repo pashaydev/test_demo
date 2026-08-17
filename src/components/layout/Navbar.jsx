@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
+import WalletButton from '../wallet/WalletButton';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,11 +41,7 @@ function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <button
-                className="btn"
-              >
-                Connect
-              </button>
+              <WalletButton className="btn" />
             </div>
 
             <ThemeToggle />
@@ -76,12 +73,7 @@ function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <button
-                className="block px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
-                onClick={() => setIsOpen(false)}
-              >
-                Connect
-              </button>
+              <WalletButton className="inline-flex items-center px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700" />
             </div>
           </div>
         )}
