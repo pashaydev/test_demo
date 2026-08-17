@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
+import ThemeToggle from './ThemeToggle';
+import WalletButton from '../wallet/WalletButton';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-surface shadow-sm">
       <div className="container">
         <div className="flex justify-between h-16">
           <div className="flex">
@@ -27,33 +29,33 @@ function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="text-secondary-600 hover:text-primary-600 px-3 py-2 text-sm font-medium"
-              >
-                {item.name}
-              </Link>
-            ))}
-            <button
-              className="btn"
-            >
-              Connect
-            </button>
-          </div>
+          <div className="flex items-center gap-3">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex md:items-center md:space-x-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="text-muted hover:text-primary-600 px-3 py-2 text-sm font-medium"
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <WalletButton className="btn" />
+            </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
-            <button
-              type="button"
-              className="text-secondary-600 hover:text-primary-600"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
+            <ThemeToggle />
+
+            {/* Mobile menu button */}
+            <div className="flex items-center md:hidden">
+              <button
+                type="button"
+                className="text-muted hover:text-primary-600"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -65,18 +67,13 @@ function Navbar() {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="block px-3 py-2 text-base font-medium text-secondary-600 hover:text-primary-600 hover:bg-primary-50"
+                  className="block px-3 py-2 text-base font-medium text-muted hover:text-primary-600 hover:bg-primary-500/10"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <button
-                className="block px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
-                onClick={() => setIsOpen(false)}
-              >
-                Connect
-              </button>
+              <WalletButton className="inline-flex items-center px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700" />
             </div>
           </div>
         )}

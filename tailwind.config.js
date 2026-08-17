@@ -1,4 +1,8 @@
+// Semantic colours are CSS variables (see src/index.css) so they flip in dark mode.
+const token = (name) => `rgb(var(--color-${name}) / <alpha-value>)`;
+
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,jsx}"
@@ -6,6 +10,13 @@ export default {
   theme: {
     extend: {
       colors: {
+        page: token('page'),
+        surface: token('surface'),
+        'surface-muted': token('surface-muted'),
+        body: token('body'),
+        muted: token('muted'),
+        subtle: token('subtle'),
+        line: token('line'),
         "primary": {
           '50': '#edf9ff',
           '100': '#d6f0ff',
